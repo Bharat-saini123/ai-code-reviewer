@@ -108,7 +108,7 @@ export default function Home() {
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: result ? '1fr 1fr' : '1fr', gap: '24px', transition: 'all 0.3s ease' }}>
+        <div className={`layout-grid ${result ? 'has-result' : ''}`}>
           {/* Left: Input panel */}
           <div>
             <div style={{
@@ -422,6 +422,17 @@ export default function Home() {
       </main>
 
       <style>{`
+        .layout-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 24px;
+          transition: all 0.3s ease;
+        }
+        @media (min-width: 800px) {
+          .layout-grid.has-result {
+            grid-template-columns: 1fr 1fr;
+          }
+        }
         @keyframes spin { to { transform: rotate(360deg); } }
         @keyframes fadeSlideUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
       `}</style>
